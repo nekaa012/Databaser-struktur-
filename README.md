@@ -48,6 +48,8 @@ Kunde
 Ansatt
 Supportsak
 
+<img width="408" height="195" alt="image" src="https://github.com/user-attachments/assets/8d7825fe-a261-4302-bf66-6fd4ac741cbd" />
+
 
 •	STEG 2- Forstå tabell ,rad og felt
 Lager vi tabel som samler informasjon om en type thing
@@ -61,6 +63,9 @@ Table Kunde {
   KundeID integer [pk , increment]
   Navn varchar
   Epost varchar  }
+
+  <img width="175" height="134" alt="image" src="https://github.com/user-attachments/assets/4b1d6b7b-30a9-4152-9df0-39d28b5484c6" />
+
 
 STEG -3  Entitet og tabell
 En Entitet er noe vi trenger å lagre info om i databasen.DET blir vanligvis i en tabell.
