@@ -235,17 +235,120 @@ Brukernavn  ikke kopieres inn i hvert innlegg  fordi det blir unødvendig  dobbe
 
 STEG 3-
 En kunde kan ha mange bestillinger , men hver bestilling tilhører bare en kunde. KundeID brukes som fremmednøkkel i Bestilling -tabellen for å koble bestillingen til riktig kunde. 
+Table Kunde {
+  KundeID integer [pk]
+  Navn varchar
+  Epost varchar
+}
+Table Bestilling {
+  BestillingID interger [pk]
+  Dato date
+  Status varchar 
+  KundeID integer [ref: > Kunde.KundeID]
+}
 
+<img width="232" height="283" alt="image" src="https://github.com/user-attachments/assets/c1bfbb3d-a786-403d-a962-664aae98ca13" />
 
+Steg 4- Begge modellene har samme relasjon, som kalles 1:M .
+I Bruker : Innleg -kan en bruker skrive mange innlegg, men hvert innleng tilhører en bruker.
+i Kunde :  Bestilling- kan en kunde ha mange bestiliinger ,men hver bestilling tilhører en kunde.
 
+ i begge modellene har den første tabellen en PKJ , og denne ID- en brukes som fremmednøkkel i den andre tabellen.
 
+ OPPGAVE -3 
+ steg1 -
+ En fremmednøkkel kobler to tabeller sammen ved å peke på primærnøkkelen i en annen tabell. Dette unngår dobbeltlagring av info og gjør databasen mer ryddig.
+ 
+ Table Kunde {
+  KundeID integer [pk]
+  Navn varchar
+  Epost varchar
+}
 
+Table Sak {
+  SakID integer [pk]
+  Tittel varchar
+  Status varchar
+  KundeID integer [ ref: > Kunde.KundeID]
+}
 
+<img width="444" height="166" alt="image" src="https://github.com/user-attachments/assets/65a3d601-69f8-4f94-a18d-4bcc6eec60de" />
 
+steg 2-
+Koble Ansatt til sak 
+Ansatt brukes som fremmednøkkel i sak -tabellen for å koble saken til riktig ansatt.
+Table Ansatt {
+  AnsattID integer [pk]
+  Navn varchar
+  Avdeling varchar
+}
 
+Table Sak {
+  SakID integer [pk]
+  Tittel varchar
+  Status varchar
+  AnsattID integer [ref: > Ansatt.AnsattID]
+}
 
+<img width="446" height="175" alt="image" src="https://github.com/user-attachments/assets/3261c845-a31e-4116-8367-3b9ebe4f00bf" />
 
+Steg 3- samlet modell
+Samlet ER-modellen med alle tre tabellene og relasjonene. 
 
+Table Kunde {
+  KundeID integer [pk]
+  Navn varchar
+  Epost varchar
+}
+
+Table Sak {
+  SakID integer [pk]
+  Tittel varchar
+  Status varchar
+  KundeID integer [ref: > Kunde.KundeID]
+  AnsattID integer [ref: > Ansatt.AnsattID]
+}
+
+Table Ansatt {
+  AnsattID integer [pk]
+  Navn varchar
+  Avdeling varchar
+}
+<img width="433" height="221" alt="image" src="https://github.com/user-attachments/assets/199c6028-a4ca-4e45-8faf-e2a5697794ac" />
+
+Modellen har  tre tabeller : Kunde, sak, og Ansatt. AnsattID , KundeID er fremmednøkler i sak-tabellen. En kunde og En Ansatt har mange saker .Hver sak tilhører en kunde og er  tildelt en Ansatt.
+
+STEG 4- test modellen med eksempeldata
+- Kan en kunde ha flere saker? Ja. Kunde 17 har sak 103 og 108.
+- Kan en ansatt ha flere saker? Ja. Ansatt 4 arbeider med sak 103 og 112.
+- Hvilken kunde tilhører sak 103? Kunde 17, fordi Sak.KundeID = 17.
+- Hvilken ansatt arbeider med sak 103? Ansatt 4, fordi Sak.AnsattID = 4.
+Vi tester med eksempeldata for å kontrollere at relasjonene støtter behovet før databasen bygges.
+
+STEG 5 - les relasjonene som setninger 
+
+Relasjonene i modellen kan leses slik:
+- En kunde kan ha mange saker.
+- Hver sak tilhører én kunde.
+- En ansatt kan arbeide med mange saker.
+- Hver sak er tildelt én ansatt.
+Dette stemmer med modellen: Sak.KundeID peker til Kunde.KundeID, og Sak.AnsattID peker til Ansatt.AnsattID.
+
+STEG 6- Finn riktig steg for fremmednøkkelen.
+Produkt.KategoriID er fremmednøkkelen som peker til Kategori.KategoriID. Derfor kan én kategori ha mange produkter, og hvert produkt tilhører én kategori.
+
+Table kategori { 
+kategoriID integer [PK]
+kategoriNavn varcar 
+}
+Table Produkt {
+ProduktID integer [PK]
+ProduktNavn varchar
+Pris integer 
+KategoriID integer [ref:> kategori.kategoriID]
+}
+
+<img width="453" height="186" alt="image" src="https://github.com/user-attachments/assets/8b31f931-6f3b-42ac-a0dd-db008cdf8e8f" />
 
 
 
