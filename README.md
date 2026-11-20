@@ -99,6 +99,8 @@ Table Kunde {
   opprettetDato datetime }
 vi  gjør dette separat for å kontrollere at info  ligger i riktig tabell før vi lager relasjoner .
 
+<img width="300" height="259" alt="image" src="https://github.com/user-attachments/assets/e98df6bd-c679-4dd0-bd54-4759df86befc" />
+
 Steg-5   Primærnøkkel 
 EN pk er et felt som identifiserer hver rad unikt i en tabell.
 Desse feltene er Pk 
@@ -168,6 +170,8 @@ Ref: Kunde.KundeID < Sak.KundeID
 Vi har lagt KundeID i Sak -tabellen .
 KundeID er PK i Kunde tabellen.
 KundeID brukes som kobling i Sak.tabellen.
+<img width="302" height="200" alt="image" src="https://github.com/user-attachments/assets/f6876e27-c96f-449a-abf0-a7857be643a6" />
+
 
 •	STEG8-oppgave A 
 En avdeling kan ha mange ansatte, men hver ansatt tilhører en avdeling. 
@@ -180,6 +184,8 @@ Navn varchar (100)
   Epost varchar(100)
   AvdelingID integer }
 Ref: Avdeling.AvdelingID < Ansatt.AvdelingID
+<img width="365" height="140" alt="image" src="https://github.com/user-attachments/assets/10f9b3a9-3623-4c82-b608-35ef33153a68" />
+
 
 OPPGAVE -B 
 EN kategori kan ha mange produktet , men hvert produkt tilhører en kategori.
@@ -195,6 +201,40 @@ Table Produkt{
   Pris decimal (10,2)
   KategoriID integer}
   Ref:Kategori.KategoriID < Produkt.KategoriID
+  
+   <img width="364" height="125" alt="image" src="https://github.com/user-attachments/assets/8910600e-1a22-41bc-b6d6-123afb11c5ed" />
+
+Oppgave -2
+steg-1
+En bruker kan skrive mange innlegg, men hvert innlegg tilhører bare en bruker.BrukerID brukes som fremmednøkkel i tabellen innlegg for å koble tabellene sammen.
+
+Table Bruker {
+  BrukerID int [pk]
+  Brukernavn varchar
+  Rolle varchar
+}
+Table Innlegg {
+  InnleggID int [pk]
+  Tittle varchar
+  Tekst text
+  BrukerID int [ref: >Bruker.BrukerID]
+}
+
+<img width="233" height="287" alt="image" src="https://github.com/user-attachments/assets/b5d81396-112d-4a70-841f-a969e0a23681" />
+
+steg-2
+Kontroll av ER- modellen
+
+begge tabellene en Primærnøkkel - Bruker har BrukerID som PK. Innlegg har innleggID som PK.
+
+BrukerID i innlegg som koblingsfelt- BrukerID er fremmednøkkel (FK)
+
+Relasjonen 1:M - En bruker kan skrive  mange innlegg, men hvert innlegg tilhører en bruker. 
+
+Brukernavn  ikke kopieres inn i hvert innlegg  fordi det blir unødvendig  dobbeltlagring. HVis brukernavnet endres, må vi endre det i mange innlegg. Det er bedre å bruke BrukerID  som kobling til Bruker-tabellen.
+
+STEG 3-
+En kunde kan ha mange bestillinger , men hver bestilling tilhører bare en kunde. KundeID brukes som fremmednøkkel i Bestilling -tabellen for å koble bestillingen til riktig kunde. 
 
 
 
