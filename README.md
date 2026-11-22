@@ -350,6 +350,52 @@ KategoriID integer [ref:> kategori.kategoriID]
 
 <img width="453" height="186" alt="image" src="https://github.com/user-attachments/assets/8b31f931-6f3b-42ac-a0dd-db008cdf8e8f" />
 
+OPPGAVE -4
+STEG 1 -
+Personopplysninger: Navn og e-post er personopplysninger. KundeID kan også være det dersom den kan knyttes til en bestemt kunde. GDPR stiller krav til hvordan slike opplysninger samles inn, brukes, sikres og slettes.
 
+Steg 2 –
+Dataminimering: Samle bare inn opplysninger som kundestøttesystemet trenger. Hvis fødselsdato, personnummer eller privat adresse ikke er nødvendig, bør de ikke lagres.
+
+Steg 3 – 
+Relasjoner og personvern: En sak kan knyttes til en kunde via KundeID. Da kan informasjon om saken også kobles til kundens navn og e-post. Derfor må vi se på hvordan tabellene henger sammen, ikke bare på innholdet i hver tabell for seg.
+
+Steg 4 – 
+Formål og tilgang: Navn og e-post kan være nødvendig for å finne saken og kontakte kunden. Telefon bør bare lagres hvis kundestøtten faktisk trenger det. Fødselsdato og personnummer er vanligvis ikke nødvendig for å løse en supportsak.
+
+Bestem hvem som får lese eller endre opplysningene. Etter prinsippet om minste privilegium skal ansatte bare ha tilgang til det de trenger for jobben.
+
+Steg 5-
+Personopplysning
+
+jeg lagde tre feltene - Navn , Epost, KundeID
+
+Table kunde {
+kundeID int [pk, note:'Personopplysning']
+Navn varchar [note: 'Personopplysning']
+Epost varchar [note: 'Personopplisning']
+Telefon varchar }
+
+Personvernkontroll
+Felt          Hvorfor trenger vi det?       hvem kan se det?
+Navn         Identifisere kunden            kundenstøtte
+Epost        kontakte kunden                kundenstøtte
+KundeID     Finne riktig kunde             kundestøtte og admin
+
+vi må beskytte personopplysninger i databasen. Bare ansatte som trenger informasjonen i arbiedet sitt, skal ha tilgang. Vi bør bare lagre nødvendige opplysninger. Hvis informasjon kommer på avveie, kan det føre til misbruk av personopplysninger og brudd på personvernet.
+
+Steg 6
+Lagringstid:
+En avsluttet supportsak bør ikke nødvendigvis lagres for alltid. Når saken ikke lenger trengs, bør den slettes eller anonymiseres etter en fast rutine.
+
+Det samme gjelder kunder som har sluttet å bruke tjenesten. Vurder hvilke opplysninger som fortsatt trengs, og slett resten. 
+
+oppgave- svar kort 
+1-Dataminimering: Samle bare inn opplysninger som trengs.
+2-KundeID: Den kan kobles til en bestemt kunde.
+3-Relasjoner: De kan koble opplysninger sammen og gjøre en person identifiserbar.
+4-Begrenset tilgang: Bare ansatte som trenger opplysningene, bør se dem.
+5-Lagringstid: Slett eller anonymiser opplysninger når de ikke lenger trengs.
+6-Formål: Da vet vi om feltet er nødvendig, og unngår å lagre unødvendige opplysninger.
 
 
